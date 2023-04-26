@@ -1,3 +1,4 @@
+using MagicVilla_API;
 using MagicVilla_API.Datos;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
  });
+
+//AGREGAMOS LA INJECCION DE DEPENDECIA DE LA CLASE QUE HACE TODO EL MAPEO
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 var app = builder.Build();
 
